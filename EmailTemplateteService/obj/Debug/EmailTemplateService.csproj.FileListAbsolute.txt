@@ -1,0 +1,5 @@
+c:\users\ay1185\documents\visual studio 2015\EmailTemplateteService\EmailTemplateteService\bin\Debug\EmailTemplateteService.dll
+c:\users\ay1185\documents\visual studio 2015\EmailTemplateteService\EmailTemplateteService\bin\Debug\EmailTemplateteService.pdb
+c:\users\ay1185\documents\visual studio 2015\EmailTemplateteService\EmailTemplateteService\obj\Debug\EmailTemplateService.csprojResolveAssemblyReference.cache
+c:\users\ay1185\documents\visual studio 2015\EmailTemplateteService\EmailTemplateteService\obj\Debug\EmailTemplateteService.dll
+c:\users\ay1185\documents\visual studio 2015\EmailTemplateteService\EmailTemplateteService\obj\Debug\EmailTemplateteService.pdb
