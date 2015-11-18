@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SOSDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="branches">
+    <Key>
+      <PropertyRef Name="branch_num" />
+    </Key>
+    <Property Name="branch_num" Type="smallint" Nullable="false" />
+    <Property Name="name" Type="char" MaxLength="45" Nullable="false" />
+    <Property Name="manager" Type="int" Nullable="false" />
+    <Property Name="street_id" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="street" Type="char" MaxLength="45" Nullable="false" />
+    <Property Name="house_num" Type="smallint" Nullable="false" />
+    <Property Name="entrance" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="appart" Type="smallint" Nullable="false" />
+    <Property Name="city_id" Type="smallint" Nullable="false" />
+    <Property Name="city" Type="char" MaxLength="30" Nullable="false" />
+    <Property Name="zipcode" Type="int" Nullable="false" />
+    <Property Name="pobox" Type="int" Nullable="false" />
+    <Property Name="po_cityid" Type="smallint" Nullable="false" />
+    <Property Name="po_city" Type="char" MaxLength="30" Nullable="false" />
+    <Property Name="po_zipcode" Type="int" Nullable="false" />
+    <Property Name="prefix1" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="phonnum1" Type="int" Nullable="false" />
+    <Property Name="prefix2" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="phonnum2" Type="int" Nullable="false" />
+    <Property Name="dprefix" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="dphonnum" Type="int" Nullable="false" />
+    <Property Name="authorized" Type="bit" Nullable="false" />
+    <Property Name="allow_emp" Type="bit" Nullable="false" />
+    <Property Name="status" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="date_cre" Type="datetime" Nullable="false" />
+    <Property Name="user_cre" Type="int" Nullable="false" />
+    <Property Name="date_mod" Type="datetime" Nullable="false" />
+    <Property Name="user_mod" Type="int" Nullable="false" />
+    <Property Name="inf_place" Type="char" MaxLength="256" />
+    <Property Name="InternetCycleVisible" Type="bit" Nullable="false" />
+    <Property Name="InscriptByOfer" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SOSDB.dbo.campains' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="campains">
+    <Key>
+      <PropertyRef Name="mis_campain" />
+      <PropertyRef Name="teur_campain" />
+      <PropertyRef Name="oved_achrai" />
+      <PropertyRef Name="heara" />
+      <PropertyRef Name="ta_hazana" />
+      <PropertyRef Name="yozem" />
+      <PropertyRef Name="ta_idkun" />
+      <PropertyRef Name="meadken" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="tz_oved" />
+    </Key>
+    <Property Name="mis_campain" Type="int" Nullable="false" />
+    <Property Name="teur_campain" Type="char" MaxLength="100" Nullable="false" />
+    <Property Name="oved_achrai" Type="int" Nullable="false" />
+    <Property Name="heara" Type="int" Nullable="false" />
+    <Property Name="ta_hazana" Type="datetime" Nullable="false" />
+    <Property Name="yozem" Type="int" Nullable="false" />
+    <Property Name="ta_idkun" Type="datetime" Nullable="false" />
+    <Property Name="meadken" Type="int" Nullable="false" />
+    <Property Name="status" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="tz_oved" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="SOSDBModelStoreContainer">
+    <EntitySet Name="branches" EntityType="Self.branches" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="campains" EntityType="Self.campains" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [campains].[mis_campain] AS [mis_campain], 
+    [campains].[teur_campain] AS [teur_campain], 
+    [campains].[oved_achrai] AS [oved_achrai], 
+    [campains].[heara] AS [heara], 
+    [campains].[ta_hazana] AS [ta_hazana], 
+    [campains].[yozem] AS [yozem], 
+    [campains].[ta_idkun] AS [ta_idkun], 
+    [campains].[meadken] AS [meadken], 
+    [campains].[status] AS [status], 
+    [campains].[tz_oved] AS [tz_oved]
+    FROM [dbo].[campains] AS [campains]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -5,6 +5,6 @@ namespace EmailTemplateteService
     interface IEmailTemplate
     {
         List<CampaignInfo> GetCampaigns();
-        List<Branch> GetBranches();
+        List<Branch> GetAllBranchesContaintWithBranchName(string term);
     }
 }

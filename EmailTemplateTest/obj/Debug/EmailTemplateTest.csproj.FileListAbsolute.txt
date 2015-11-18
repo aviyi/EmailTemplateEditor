@@ -1,0 +1,7 @@
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EmailTemplateTest.dll
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EmailTemplateTest.pdb
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\obj\Debug\EmailTemplateTest.csprojResolveAssemblyReference.cache
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\obj\Debug\EmailTemplateTest.dll
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\obj\Debug\EmailTemplateTest.pdb

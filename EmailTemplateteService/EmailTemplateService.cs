@@ -5,7 +5,13 @@ namespace EmailTemplateteService.Entities
 {
     public class EmailTemplateService : IEmailTemplate
     {
-        public List<Branch> GetBranches()
+
+        public EmailTemplateService()
+        {
+
+        }
+    
+        public List<Branch> GetAllBranchesContaintWithBranchName(string term)
         {
             throw new NotImplementedException();
         }

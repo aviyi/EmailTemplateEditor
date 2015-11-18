@@ -3,3 +3,13 @@ c:\users\ay1185\documents\visual studio 2015\EmailTemplateteService\EmailTemplat
 c:\users\ay1185\documents\visual studio 2015\EmailTemplateteService\EmailTemplateteService\obj\Debug\EmailTemplateService.csprojResolveAssemblyReference.cache
 c:\users\ay1185\documents\visual studio 2015\EmailTemplateteService\EmailTemplateteService\obj\Debug\EmailTemplateteService.dll
 c:\users\ay1185\documents\visual studio 2015\EmailTemplateteService\EmailTemplateteService\obj\Debug\EmailTemplateteService.pdb
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\bin\Debug\EmailTemplateteService.dll.config
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\bin\Debug\EmailTemplateteService.dll
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\bin\Debug\EmailTemplateteService.pdb
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\bin\Debug\EntityFramework.dll
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\bin\Debug\EntityFramework.xml
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\obj\Debug\EmailTemplateService.csprojResolveAssemblyReference.cache
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\obj\Debug\EmailTemplateteService.dll
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\obj\Debug\EmailTemplateteService.pdb
