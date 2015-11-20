@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EmailTemplateteService</RootNamespace>
     <AssemblyName>EmailTemplateteService</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -51,62 +54,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="branches.cs">
-      <DependentUpon>SOSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="campains.cs">
-      <DependentUpon>SOSModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataAccess.cs" />
+    <Compile Include="Data\branches.cs">
+      <DependentUpon>SOSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\campains.cs">
+      <DependentUpon>SOSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EmailsTemplate.cs">
+      <DependentUpon>SOSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SOSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SOSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SOSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SOSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SOSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SOSModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Entities\BranchInfo.cs" />
     <Compile Include="Entities\CampaignInfo.cs" />
     <Compile Include="EmailTemplateService.cs" />
     <Compile Include="IDataAccess.cs" />
     <Compile Include="IEmailTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SOSModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SOSModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SOSModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SOSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SOSModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SOSModel.edmx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="SOSModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SOSModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Compile Include="TemplateParams.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="packages.config" />
-    <None Include="SOSModel.edmx.diagram">
+    <EntityDeploy Include="Data\SOSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SOSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\SOSModel.edmx.diagram">
       <DependentUpon>SOSModel.edmx</DependentUpon>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SOSModel.Context.tt">
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\SOSModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SOSModel.edmx</DependentUpon>
       <LastGenOutput>SOSModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="SOSModel.tt">
+    <Content Include="Data\SOSModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SOSModel.edmx</DependentUpon>
       <LastGenOutput>SOSModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

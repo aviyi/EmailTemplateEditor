@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SOSDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="branches">
+    <Key>
+      <PropertyRef Name="branch_num" />
+    </Key>
+    <Property Name="branch_num" Type="Int16" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="manager" Type="Int32" Nullable="false" />
+    <Property Name="street_id" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="street" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="house_num" Type="Int16" Nullable="false" />
+    <Property Name="entrance" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="appart" Type="Int16" Nullable="false" />
+    <Property Name="city_id" Type="Int16" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="zipcode" Type="Int32" Nullable="false" />
+    <Property Name="pobox" Type="Int32" Nullable="false" />
+    <Property Name="po_cityid" Type="Int16" Nullable="false" />
+    <Property Name="po_city" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="po_zipcode" Type="Int32" Nullable="false" />
+    <Property Name="prefix1" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="phonnum1" Type="Int32" Nullable="false" />
+    <Property Name="prefix2" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="phonnum2" Type="Int32" Nullable="false" />
+    <Property Name="dprefix" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="dphonnum" Type="Int32" Nullable="false" />
+    <Property Name="authorized" Type="Boolean" Nullable="false" />
+    <Property Name="allow_emp" Type="Boolean" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="date_cre" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="user_cre" Type="Int32" Nullable="false" />
+    <Property Name="date_mod" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="user_mod" Type="Int32" Nullable="false" />
+    <Property Name="inf_place" Type="String" MaxLength="256" FixedLength="true" Unicode="false" />
+    <Property Name="InternetCycleVisible" Type="Boolean" Nullable="false" />
+    <Property Name="InscriptByOfer" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="EmailsTemplate" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="branches" ToRole="EmailsTemplate" />
+  </EntityType>
+  <EntityType Name="EmailsTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="brabch_num" Type="Int16" />
+    <Property Name="mis_campaign" Type="Int32" />
+    <NavigationProperty Name="branches" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="EmailsTemplate" ToRole="branches" />
+  </EntityType>
+  <EntityType Name="campains">
+    <Key>
+      <PropertyRef Name="mis_campain" />
+      <PropertyRef Name="teur_campain" />
+      <PropertyRef Name="oved_achrai" />
+      <PropertyRef Name="heara" />
+      <PropertyRef Name="ta_hazana" />
+      <PropertyRef Name="yozem" />
+      <PropertyRef Name="ta_idkun" />
+      <PropertyRef Name="meadken" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="tz_oved" />
+    </Key>
+    <Property Name="mis_campain" Type="Int32" Nullable="false" />
+    <Property Name="teur_campain" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="oved_achrai" Type="Int32" Nullable="false" />
+    <Property Name="heara" Type="Int32" Nullable="false" />
+    <Property Name="ta_hazana" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="yozem" Type="Int32" Nullable="false" />
+    <Property Name="ta_idkun" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="meadken" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="tz_oved" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_EmailsTemplate_EmailsTemplate">
+    <End Role="branches" Type="Self.branches" Multiplicity="0..1" />
+    <End Role="EmailsTemplate" Type="Self.EmailsTemplate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branches">
+        <PropertyRef Name="branch_num" />
+      </Principal>
+      <Dependent Role="EmailsTemplate">
+        <PropertyRef Name="brabch_num" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SOSDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="branches" EntityType="Self.branches" />
+    <EntitySet Name="EmailsTemplate" EntityType="Self.EmailsTemplate" />
+    <EntitySet Name="campains" EntityType="Self.campains" />
+    <AssociationSet Name="FK_EmailsTemplate_EmailsTemplate" Association="Self.FK_EmailsTemplate_EmailsTemplate">
+      <End Role="branches" EntitySet="branches" />
+      <End Role="EmailsTemplate" EntitySet="EmailsTemplate" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

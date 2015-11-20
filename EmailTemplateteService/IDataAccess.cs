@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmailTemplateteService.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace EmailTemplateteService
 {
-    interface IDataAccess
+    public interface IDataAccess
     {
-        List<branches> GetAllBranchesContaintWithBranchName(string startWith);
+        List<branches> GetBranches();
+        List<campains> GetCampaigns();
+        bool AddEmailTemplate(TemplateParams templateParams);
          
+
     }
 }

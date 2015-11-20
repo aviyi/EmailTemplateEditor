@@ -1,24 +1,35 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace EmailTemplateteService.Entities
 {
     public class EmailTemplateService : IEmailTemplate
     {
-
-        public EmailTemplateService()
+        private readonly IDataAccess _dataBase;
+        public EmailTemplateService(IDataAccess dataBase)
         {
-
-        }
-    
-        public List<Branch> GetAllBranchesContaintWithBranchName(string term)
-        {
-            throw new NotImplementedException();
+            _dataBase = dataBase;
         }
 
-        public List<CampaignInfo> GetCampaigns()
+        public List<BranchInfo> GetBranchesContainBranchName(string term)
         {
-            throw new NotImplementedException();
+
+            return _dataBase.GetBranches().Where(b => b.name.Contains(term)).Select(b => new BranchInfo
+            {
+                Id = b.branch_num,
+                Name = b.name
+            }).ToList();
+
+        }
+
+        public List<CampaignInfo> GetCampaignsContainCampaignName(string term)
+        {
+
+            return _dataBase.GetCampaigns().Where(b => b.teur_campain.Contains(term)).Select(b => new CampaignInfo
+            { 
+                Name = b.teur_campain
+            }).ToList();
         }
     }
 }

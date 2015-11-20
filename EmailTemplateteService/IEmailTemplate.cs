@@ -4,7 +4,7 @@ namespace EmailTemplateteService
 {
     interface IEmailTemplate
     {
-        List<CampaignInfo> GetCampaigns();
-        List<Branch> GetAllBranchesContaintWithBranchName(string term);
+        List<CampaignInfo> GetCampaignsContainCampaignName(string term);
+        List<BranchInfo> GetBranchesContainBranchName(string term);
     }
 }

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SOSDBModelStoreContainer" CdmEntityContainer="SOSDBEntities1">
+    <EntitySetMapping Name="branches">
+      <EntityTypeMapping TypeName="SOSDBModel.branches">
+        <MappingFragment StoreEntitySet="branches">
+          <ScalarProperty Name="branch_num" ColumnName="branch_num" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="manager" ColumnName="manager" />
+          <ScalarProperty Name="street_id" ColumnName="street_id" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="house_num" ColumnName="house_num" />
+          <ScalarProperty Name="entrance" ColumnName="entrance" />
+          <ScalarProperty Name="appart" ColumnName="appart" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+          <ScalarProperty Name="pobox" ColumnName="pobox" />
+          <ScalarProperty Name="po_cityid" ColumnName="po_cityid" />
+          <ScalarProperty Name="po_city" ColumnName="po_city" />
+          <ScalarProperty Name="po_zipcode" ColumnName="po_zipcode" />
+          <ScalarProperty Name="prefix1" ColumnName="prefix1" />
+          <ScalarProperty Name="phonnum1" ColumnName="phonnum1" />
+          <ScalarProperty Name="prefix2" ColumnName="prefix2" />
+          <ScalarProperty Name="phonnum2" ColumnName="phonnum2" />
+          <ScalarProperty Name="dprefix" ColumnName="dprefix" />
+          <ScalarProperty Name="dphonnum" ColumnName="dphonnum" />
+          <ScalarProperty Name="authorized" ColumnName="authorized" />
+          <ScalarProperty Name="allow_emp" ColumnName="allow_emp" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date_cre" ColumnName="date_cre" />
+          <ScalarProperty Name="user_cre" ColumnName="user_cre" />
+          <ScalarProperty Name="date_mod" ColumnName="date_mod" />
+          <ScalarProperty Name="user_mod" ColumnName="user_mod" />
+          <ScalarProperty Name="inf_place" ColumnName="inf_place" />
+          <ScalarProperty Name="InternetCycleVisible" ColumnName="InternetCycleVisible" />
+          <ScalarProperty Name="InscriptByOfer" ColumnName="InscriptByOfer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailsTemplate">
+      <EntityTypeMapping TypeName="SOSDBModel.EmailsTemplate">
+        <MappingFragment StoreEntitySet="EmailsTemplate">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="brabch_num" ColumnName="brabch_num" />
+          <ScalarProperty Name="mis_campaign" ColumnName="mis_campaign" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="campains">
+      <EntityTypeMapping TypeName="SOSDBModel.campains">
+        <MappingFragment StoreEntitySet="campains">
+          <ScalarProperty Name="mis_campain" ColumnName="mis_campain" />
+          <ScalarProperty Name="teur_campain" ColumnName="teur_campain" />
+          <ScalarProperty Name="oved_achrai" ColumnName="oved_achrai" />
+          <ScalarProperty Name="heara" ColumnName="heara" />
+          <ScalarProperty Name="ta_hazana" ColumnName="ta_hazana" />
+          <ScalarProperty Name="yozem" ColumnName="yozem" />
+          <ScalarProperty Name="ta_idkun" ColumnName="ta_idkun" />
+          <ScalarProperty Name="meadken" ColumnName="meadken" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="tz_oved" ColumnName="tz_oved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
