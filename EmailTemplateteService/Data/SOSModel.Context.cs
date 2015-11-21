@@ -13,10 +13,10 @@ namespace EmailTemplateteService.Data
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SOSDBEntities1 : DbContext
+    public partial class SOSDBEntities : DbContext
     {
-        public SOSDBEntities1()
-            : base("name=SOSDBEntities1")
+        public SOSDBEntities()
+            : base("name=SOSDBEntities")
         {
         }
     
@@ -25,8 +25,8 @@ namespace EmailTemplateteService.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<branches> branches { get; set; }
-        public virtual DbSet<EmailsTemplate> EmailsTemplate { get; set; }
-        public virtual DbSet<campains> campains { get; set; }
+        public virtual DbSet<branch> branches { get; set; }
+        public virtual DbSet<EmailsTemplate> EmailsTemplates { get; set; }
+        public virtual DbSet<campain> campains { get; set; }
     }
 }

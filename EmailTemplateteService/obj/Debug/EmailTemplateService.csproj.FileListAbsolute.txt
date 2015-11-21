@@ -12,3 +12,4 @@ C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\bin\Deb
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\obj\Debug\EmailTemplateteService.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\obj\Debug\EmailTemplateteService.pdb
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateteService\obj\Debug\EmailTemplateService.csprojResolveAssemblyReference.cache

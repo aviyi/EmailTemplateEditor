@@ -119,7 +119,7 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SOSDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="branches">
+        <EntityType Name="branch">
           <Key>
             <PropertyRef Name="branch_num" />
           </Key>
@@ -154,7 +154,7 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
           <Property Name="inf_place" Type="String" MaxLength="256" FixedLength="true" Unicode="false" />
           <Property Name="InternetCycleVisible" Type="Boolean" Nullable="false" />
           <Property Name="InscriptByOfer" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="EmailsTemplate" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="branches" ToRole="EmailsTemplate" />
+          <NavigationProperty Name="EmailsTemplates" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="branches" ToRole="EmailsTemplate" />
         </EntityType>
         <EntityType Name="EmailsTemplate">
           <Key>
@@ -165,9 +165,9 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
           <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="brabch_num" Type="Int16" />
           <Property Name="mis_campaign" Type="Int32" />
-          <NavigationProperty Name="branches" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="EmailsTemplate" ToRole="branches" />
+          <NavigationProperty Name="branch" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="EmailsTemplate" ToRole="branches" />
         </EntityType>
-        <EntityType Name="campains">
+        <EntityType Name="campain">
           <Key>
             <PropertyRef Name="mis_campain" />
             <PropertyRef Name="teur_campain" />
@@ -192,7 +192,7 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
           <Property Name="tz_oved" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_EmailsTemplate_EmailsTemplate">
-          <End Role="branches" Type="Self.branches" Multiplicity="0..1" />
+          <End Role="branches" Type="Self.branch" Multiplicity="0..1" />
           <End Role="EmailsTemplate" Type="Self.EmailsTemplate" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="branches">
@@ -203,13 +203,13 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SOSDBEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="branches" EntityType="Self.branches" />
-          <EntitySet Name="EmailsTemplate" EntityType="Self.EmailsTemplate" />
-          <EntitySet Name="campains" EntityType="Self.campains" />
+        <EntityContainer Name="SOSDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="branches" EntityType="Self.branch" />
+          <EntitySet Name="EmailsTemplates" EntityType="Self.EmailsTemplate" />
+          <EntitySet Name="campains" EntityType="Self.campain" />
           <AssociationSet Name="FK_EmailsTemplate_EmailsTemplate" Association="Self.FK_EmailsTemplate_EmailsTemplate">
             <End Role="branches" EntitySet="branches" />
-            <End Role="EmailsTemplate" EntitySet="EmailsTemplate" />
+            <End Role="EmailsTemplate" EntitySet="EmailsTemplates" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -217,9 +217,9 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SOSDBModelStoreContainer" CdmEntityContainer="SOSDBEntities1">
+        <EntityContainerMapping StorageEntityContainer="SOSDBModelStoreContainer" CdmEntityContainer="SOSDBEntities">
           <EntitySetMapping Name="branches">
-            <EntityTypeMapping TypeName="SOSDBModel.branches">
+            <EntityTypeMapping TypeName="SOSDBModel.branch">
               <MappingFragment StoreEntitySet="branches">
                 <ScalarProperty Name="branch_num" ColumnName="branch_num" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -255,7 +255,7 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EmailsTemplate">
+          <EntitySetMapping Name="EmailsTemplates">
             <EntityTypeMapping TypeName="SOSDBModel.EmailsTemplate">
               <MappingFragment StoreEntitySet="EmailsTemplate">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -267,7 +267,7 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="campains">
-            <EntityTypeMapping TypeName="SOSDBModel.campains">
+            <EntityTypeMapping TypeName="SOSDBModel.campain">
               <MappingFragment StoreEntitySet="campains">
                 <ScalarProperty Name="mis_campain" ColumnName="mis_campain" />
                 <ScalarProperty Name="teur_campain" ColumnName="teur_campain" />
@@ -296,7 +296,7 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

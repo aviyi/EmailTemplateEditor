@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SOSDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="branches">
+  <EntityType Name="branch">
     <Key>
       <PropertyRef Name="branch_num" />
     </Key>
@@ -35,7 +35,7 @@
     <Property Name="inf_place" Type="String" MaxLength="256" FixedLength="true" Unicode="false" />
     <Property Name="InternetCycleVisible" Type="Boolean" Nullable="false" />
     <Property Name="InscriptByOfer" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="EmailsTemplate" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="branches" ToRole="EmailsTemplate" />
+    <NavigationProperty Name="EmailsTemplates" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="branches" ToRole="EmailsTemplate" />
   </EntityType>
   <EntityType Name="EmailsTemplate">
     <Key>
@@ -46,9 +46,9 @@
     <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="brabch_num" Type="Int16" />
     <Property Name="mis_campaign" Type="Int32" />
-    <NavigationProperty Name="branches" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="EmailsTemplate" ToRole="branches" />
+    <NavigationProperty Name="branch" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="EmailsTemplate" ToRole="branches" />
   </EntityType>
-  <EntityType Name="campains">
+  <EntityType Name="campain">
     <Key>
       <PropertyRef Name="mis_campain" />
       <PropertyRef Name="teur_campain" />
@@ -73,7 +73,7 @@
     <Property Name="tz_oved" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK_EmailsTemplate_EmailsTemplate">
-    <End Role="branches" Type="Self.branches" Multiplicity="0..1" />
+    <End Role="branches" Type="Self.branch" Multiplicity="0..1" />
     <End Role="EmailsTemplate" Type="Self.EmailsTemplate" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="branches">
@@ -84,13 +84,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="SOSDBEntities1" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="branches" EntityType="Self.branches" />
-    <EntitySet Name="EmailsTemplate" EntityType="Self.EmailsTemplate" />
-    <EntitySet Name="campains" EntityType="Self.campains" />
+  <EntityContainer Name="SOSDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="branches" EntityType="Self.branch" />
+    <EntitySet Name="EmailsTemplates" EntityType="Self.EmailsTemplate" />
+    <EntitySet Name="campains" EntityType="Self.campain" />
     <AssociationSet Name="FK_EmailsTemplate_EmailsTemplate" Association="Self.FK_EmailsTemplate_EmailsTemplate">
       <End Role="branches" EntitySet="branches" />
-      <End Role="EmailsTemplate" EntitySet="EmailsTemplate" />
+      <End Role="EmailsTemplate" EntitySet="EmailsTemplates" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

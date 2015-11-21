@@ -9,8 +9,8 @@ namespace EmailTemplateteService
 {
     public interface IDataAccess
     {
-        List<branches> GetBranches();
-        List<campains> GetCampaigns();
+        List<branch> GetBranches();
+        List<campain> GetCampaigns();
         bool AddEmailTemplate(TemplateParams templateParams);
          
 

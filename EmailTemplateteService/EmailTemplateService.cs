@@ -12,6 +12,26 @@ namespace EmailTemplateteService.Entities
             _dataBase = dataBase;
         }
 
+        public bool AddTemplateForBranch(short? branchId, string subject, string body)
+        {
+            return _dataBase.AddEmailTemplate(new TemplateParams()
+            {
+                BranchId = branchId,
+                Body = body,
+                Subject = subject
+            });
+        }
+
+        public bool AddTemplateForCampaign(int campaignId, string subject, string body)
+        {
+            return _dataBase.AddEmailTemplate(new TemplateParams()
+            {
+                CampaignId= campaignId,
+                Body = body,
+                Subject = subject
+            });
+        }
+
         public List<BranchInfo> GetBranchesContainBranchName(string term)
         {
 
@@ -27,7 +47,7 @@ namespace EmailTemplateteService.Entities
         {
 
             return _dataBase.GetCampaigns().Where(b => b.teur_campain.Contains(term)).Select(b => new CampaignInfo
-            { 
+            {
                 Name = b.teur_campain
             }).ToList();
         }

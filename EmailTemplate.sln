@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailTemplateService", "EmailTemplateteService\EmailTemplateService.csproj", "{FEF0CF0C-1F5C-406C-8B58-A81DE9489BB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailTemplateSite", "EmailTemplateSite\EmailTemplateSite.csproj", "{48B85103-5561-43F4-A3A5-0DDDF96F1291}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailTemplateWeb", "EmailTemplateSite\EmailTemplateWeb.csproj", "{48B85103-5561-43F4-A3A5-0DDDF96F1291}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

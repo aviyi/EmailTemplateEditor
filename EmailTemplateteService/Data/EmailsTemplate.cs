@@ -20,6 +20,6 @@ namespace EmailTemplateteService.Data
         public Nullable<short> brabch_num { get; set; }
         public Nullable<int> mis_campaign { get; set; }
     
-        public virtual branches branches { get; set; }
+        public virtual branch branch { get; set; }
     }
 }

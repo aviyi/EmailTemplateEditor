@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="SOSDBModelStoreContainer" CdmEntityContainer="SOSDBEntities1">
+  <EntityContainerMapping StorageEntityContainer="SOSDBModelStoreContainer" CdmEntityContainer="SOSDBEntities">
     <EntitySetMapping Name="branches">
-      <EntityTypeMapping TypeName="SOSDBModel.branches">
+      <EntityTypeMapping TypeName="SOSDBModel.branch">
         <MappingFragment StoreEntitySet="branches">
           <ScalarProperty Name="branch_num" ColumnName="branch_num" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -38,7 +38,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EmailsTemplate">
+    <EntitySetMapping Name="EmailsTemplates">
       <EntityTypeMapping TypeName="SOSDBModel.EmailsTemplate">
         <MappingFragment StoreEntitySet="EmailsTemplate">
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -50,7 +50,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="campains">
-      <EntityTypeMapping TypeName="SOSDBModel.campains">
+      <EntityTypeMapping TypeName="SOSDBModel.campain">
         <MappingFragment StoreEntitySet="campains">
           <ScalarProperty Name="mis_campain" ColumnName="mis_campain" />
           <ScalarProperty Name="teur_campain" ColumnName="teur_campain" />

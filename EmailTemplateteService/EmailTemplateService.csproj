@@ -55,10 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess.cs" />
-    <Compile Include="Data\branches.cs">
+    <Compile Include="Data\branch.cs">
       <DependentUpon>SOSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\campains.cs">
+    <Compile Include="Data\campain.cs">
       <DependentUpon>SOSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\EmailsTemplate.cs">

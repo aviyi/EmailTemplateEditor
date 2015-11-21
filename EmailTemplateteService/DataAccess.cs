@@ -11,18 +11,55 @@ namespace EmailTemplateteService
     {
         public bool AddEmailTemplate(TemplateParams templateParams)
         {
-            throw new NotImplementedException();
+
+            bool isAdded=false;
+            using (var ctx = InitSOSDBEntities())
+            {
+                try
+                {
+                    ctx.EmailsTemplates.Add(new EmailsTemplate
+                    {
+                        brabch_num = templateParams.BranchId,
+                        mis_campaign = templateParams.CampaignId,
+                        Subject = templateParams.Subject,
+                        Body = templateParams.Body,
+                    });
+                    ctx.SaveChanges();
+                    isAdded = true;
+
+                }
+                catch
+                {
+
+
+                }
+            }
+
+            return isAdded;
         }
 
-        public List<branches> GetBranches()
+        public List<branch> GetBranches()
         {
-            return null;
+            using (var ctx = InitSOSDBEntities())
+            {
+                return ctx.branches.ToList();
+            }
+
+
 
         }
 
-        public List<campains> GetCampaigns()
+        public List<campain> GetCampaigns()
         {
-            throw new NotImplementedException();
+            using (var ctx = InitSOSDBEntities())
+            {
+                return ctx.campains.ToList();
+            }
+
+        }
+        private SOSDBEntities InitSOSDBEntities()
+        {
+            return new SOSDBEntities();
         }
     }
 }
