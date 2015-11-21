@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace EmailTemplateteService.Entities
+namespace EmailTemplateteService
 {
     public class EmailTemplateService : IEmailTemplate
     {

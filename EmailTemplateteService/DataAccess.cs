@@ -28,9 +28,9 @@ namespace EmailTemplateteService
                     isAdded = true;
 
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    throw ex;
 
                 }
             }

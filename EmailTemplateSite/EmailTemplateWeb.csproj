@@ -206,8 +206,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\BranchViewModel.cs" />
+    <Compile Include="Controllers\EmailTemplateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,9 +218,21 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BranchViewModel.cs" />
+    <Compile Include="ViewModels\Converter.cs" />
+    <Compile Include="ViewModels\TemplateParamsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Asset\src\app.js" />
+    <Content Include="Asset\src\homePage\home.ctrl.js" />
+    <Content Include="Asset\src\homePage\home.tpl.html" />
+    <Content Include="Asset\src\index.html" />
+    <Content Include="Asset\src\shared\services\email-tepmlate.srv.js" />
+    <Content Include="Asset\src\templaeEditorPage\tinymce.drv.js" />
+    <Content Include="Asset\src\shared\main.css" />
+    <Content Include="Asset\src\templaeEditorPage\template-editor-page.tpl.html" />
+    <Content Include="Asset\src\templaeEditorPage\template-editor-page.ctrl.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -268,11 +280,6 @@
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -284,6 +291,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EmailTemplateteService\EmailTemplateService.csproj">
+      <Project>{fef0cf0c-1f5c-406c-8b58-a81de9489bb8}</Project>
+      <Name>EmailTemplateService</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
