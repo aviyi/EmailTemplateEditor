@@ -4,11 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2b43405d3812440187d2d56f8ce2db9f" Name="Diagram1" ZoomLevel="79">
-        <EntityTypeShape EntityType="SOSDBModel.branch" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SOSDBModel.EmailsTemplate" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SOSDBModel.campain" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="88b29f4ca5704923a3d46268c669711f" Name="Diagram1">
+        <EntityTypeShape EntityType="SOSDBModel.branch" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOSDBModel.campain" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SOSDBModel.EmailsTemplate" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="SOSDBModel.FK_EmailsTemplate_EmailsTemplate" ManuallyRouted="false" />
+        <AssociationConnector Association="SOSDBModel.FK_EmailsTemplate_campains" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,12 +4,19 @@ namespace EmailTemplateteService
 {
     interface IEmailTemplate
     {
-        List<CampaignInfo> GetCampaignsContainCampaignName(string term);
-        List<BranchInfo> GetBranchesContainBranchName(string term);
-        bool AddTemplateForBranch(short? branchId ,string subject, string body);
+        List<CampaignInfo> GetCampaignsDoNotHaveTemplate();
+        List<BranchInfo> GetBranchesDoNotHaveTemplate();
+        bool CreateEmailTemplate(int? campaignId,short? branchId ,string subject, string body);
+         
+        List<EmailTemplateInfo> GetlAlEmailTemplatesForBranches();
 
-        bool AddTemplateForCampaign(int campaignId, string subject, string body);
+
+        List<EmailTemplateInfo> GetlAlEmailTemplatesForCampaigns();
+
+        EmailTemplateInfo GetEmailTemplateById(int templateId);
+        bool DeleteTemplate(int templateId);
 
 
+        bool EditEmailTemplate(EmailTemplateInfo emailTemplateInfo);
     }
 }

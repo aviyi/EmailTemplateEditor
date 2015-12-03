@@ -14,6 +14,12 @@ namespace EmailTemplateteService.Data
     
     public partial class campain
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public campain()
+        {
+            this.EmailsTemplates = new HashSet<EmailsTemplate>();
+        }
+    
         public int mis_campain { get; set; }
         public string teur_campain { get; set; }
         public int oved_achrai { get; set; }
@@ -24,5 +30,8 @@ namespace EmailTemplateteService.Data
         public int meadken { get; set; }
         public string status { get; set; }
         public int tz_oved { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmailsTemplate> EmailsTemplates { get; set; }
     }
 }

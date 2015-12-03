@@ -1,0 +1,26 @@
+﻿<div id="email-template-container">
+    <form ng-submit="save()">
+
+        <div ng-switch="model.type">
+            <div ng-switch-when="branch">
+
+                <angucomplete id="branches"
+                              placeholder=" בחר סניף"
+                              pause="400"
+                              selectedObject="model.selectedBranch"
+                              url="/api/EmailTemplate/GetBranches?termBranch="
+                              titlefield="name"
+                              minlength="1"
+                              inputclass="form-control form-control-small" />
+
+            </div>
+            <span ng-switch-when="campaign">בחר קמפיין  </span>
+        </div>
+        <div>
+            <input type="text" placeholder="נושא" ng-model="model.subject" />
+        </div>
+        <textarea ui-tinymce ng-model="model.body"></textarea>
+        <input type="submit" value="שמור" />
+    </form>
+
+</div>

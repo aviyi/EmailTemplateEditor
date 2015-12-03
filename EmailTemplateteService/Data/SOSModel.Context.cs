@@ -26,7 +26,7 @@ namespace EmailTemplateteService.Data
         }
     
         public virtual DbSet<branch> branches { get; set; }
-        public virtual DbSet<EmailsTemplate> EmailsTemplates { get; set; }
         public virtual DbSet<campain> campains { get; set; }
+        public virtual DbSet<EmailsTemplate> EmailsTemplates { get; set; }
     }
 }

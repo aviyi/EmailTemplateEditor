@@ -2,64 +2,130 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmailTemplateteService
 {
-    public class DataAccess : IDataAccess
+    public class DataAccess : IDataAccess, IDisposable
     {
-        public bool AddEmailTemplate(TemplateParams templateParams)
+        SOSDBEntities _ctx = new SOSDBEntities();
+        public bool SaveEmailTemplate(TemplateParams templateParams)
         {
 
-            bool isAdded=false;
-            using (var ctx = InitSOSDBEntities())
+            bool isAdded = false;
+            try
             {
-                try
+                _ctx.EmailsTemplates.Add(new EmailsTemplate
                 {
-                    ctx.EmailsTemplates.Add(new EmailsTemplate
-                    {
-                        brabch_num = templateParams.BranchId,
-                        mis_campaign = templateParams.CampaignId,
-                        Subject = templateParams.Subject,
-                        Body = templateParams.Body,
-                    });
-                    ctx.SaveChanges();
-                    isAdded = true;
+                    brabch_num = templateParams.BranchId,
+                    mis_campaign = templateParams.CampaignId,
+                    Subject = templateParams.Subject,
+                    Body = templateParams.Body,
+                });
+                _ctx.SaveChanges();
+                isAdded = true;
 
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-
-                }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+
 
             return isAdded;
         }
 
+
         public List<branch> GetBranches()
         {
-            using (var ctx = InitSOSDBEntities())
-            {
-                return ctx.branches.ToList();
-            }
 
-
+            return _ctx.branches.Where(b => b.status == "פ").OrderBy(b => b.name).ToList();
 
         }
 
         public List<campain> GetCampaigns()
         {
-            using (var ctx = InitSOSDBEntities())
-            {
-                return ctx.campains.ToList();
-            }
+
+            return _ctx.campains.Where(c => c.status == "פ").OrderBy(c => c.teur_campain).ToList();
+
 
         }
-        private SOSDBEntities InitSOSDBEntities()
+
+        public List<EmailsTemplate> GetEmailTemplate()
         {
-            return new SOSDBEntities();
+            return _ctx.EmailsTemplates.Where(e => e.IsDeleted == false).ToList();
+
+
+        }
+
+
+        public List<EmailsTemplate> GetEmailTemplateByCampaignId(int campaignId)
+        {
+
+            return _ctx.EmailsTemplates.Where(e => e.mis_campaign == campaignId && e.IsDeleted == false).ToList();
+        }
+
+        public List<EmailsTemplate> GetEmailTemplateByBranchId(int branchId)
+        {
+            return _ctx.EmailsTemplates.Where(e => e.brabch_num == branchId).ToList();
+        }
+
+        public List<EmailsTemplate> GetlAlEmailTemplatesForBranches()
+        {
+
+            return _ctx.EmailsTemplates.Where(e => e.brabch_num != null && e.IsDeleted == false).ToList();
+        }
+
+        public List<EmailsTemplate> GetlAlEmailTemplatesForCampaigns()
+        {
+            return _ctx.EmailsTemplates.Where(e => e.mis_campaign != null && e.IsDeleted == false).ToList();
+        }
+
+        public void Dispose()
+        {
+            _ctx.Dispose();
+        }
+
+        public EmailsTemplate GetEmailTemplateById(int templateId)
+        {
+            return _ctx.EmailsTemplates.First(e => e.Id == templateId);
+        }
+
+        public bool DeleteTemplate(int templateId)
+        {
+            bool isSuccess;
+            try
+            {
+                var tempalte = _ctx.EmailsTemplates.Where(e => e.Id == templateId).First();
+                tempalte.IsDeleted = true;
+                _ctx.SaveChanges();
+                isSuccess = true;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            return isSuccess;
+        }
+
+        public bool EditEmailTemplate(EmailsTemplate emailTemplate)
+        {
+            bool isSuccess;
+            try
+            {
+
+                var original= _ctx.EmailsTemplates.First(e => e.Id == emailTemplate.Id);
+                _ctx.Entry(original).CurrentValues.SetValues(emailTemplate);
+
+                _ctx.SaveChanges();
+                isSuccess = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return isSuccess;
         }
     }
 }

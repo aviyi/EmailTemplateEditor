@@ -19,7 +19,10 @@ namespace EmailTemplateteService.Data
         public string Body { get; set; }
         public Nullable<short> brabch_num { get; set; }
         public Nullable<int> mis_campaign { get; set; }
+        public bool IsDeleted { get; set; }
+        public System.DateTime CreatedDate { get; set; }
     
         public virtual branch branch { get; set; }
+        public virtual campain campain { get; set; }
     }
 }

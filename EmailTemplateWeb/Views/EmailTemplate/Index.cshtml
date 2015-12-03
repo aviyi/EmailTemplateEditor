@@ -1,0 +1,58 @@
+﻿@using EmailTemplateWeb.Globals
+@model IEnumerable<EmailTemplateWeb.Models.EmailTemplateViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (ViewBag.type == Constant.Branch)
+{
+    <h1>
+        רשימת טמפלטים עבור סניפים
+    </h1>
+}
+else
+{
+
+    <h1>
+        רשימת טמפלטים עבור קמפיינים
+    </h1>
+}
+<p>
+    @Html.ActionLink("צור טמפלט חדש", "Create", new { type = ViewBag.type })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BranchName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BranchName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id , type = ViewBag.type }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id, type = ViewBag.type })
+            </td>
+        </tr>
+    }
+
+</table>
+    

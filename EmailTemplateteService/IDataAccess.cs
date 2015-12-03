@@ -11,8 +11,19 @@ namespace EmailTemplateteService
     {
         List<branch> GetBranches();
         List<campain> GetCampaigns();
-        bool AddEmailTemplate(TemplateParams templateParams);
-         
+
+        List<EmailsTemplate> GetEmailTemplate();
+
+        List<EmailsTemplate> GetEmailTemplateByCampaignId(int campaignId);
+        List<EmailsTemplate> GetEmailTemplateByBranchId(int branchId);
+
+        bool SaveEmailTemplate(TemplateParams templateParams);
+        List<EmailsTemplate> GetlAlEmailTemplatesForBranches();
+        List<EmailsTemplate> GetlAlEmailTemplatesForCampaigns();
+        EmailsTemplate GetEmailTemplateById(int templateId);
+        bool DeleteTemplate(int templateId);
+
+        bool EditEmailTemplate(EmailsTemplate emailTemplate);
 
     }
 }

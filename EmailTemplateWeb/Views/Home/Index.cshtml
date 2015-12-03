@@ -1,0 +1,12 @@
+﻿@using EmailTemplateWeb.Globals
+@{
+    ViewBag.Title = "Home Page";
+}
+<div id="home-page-container">
+    <h1>בחר </h1>
+    @Html.ActionLink("סניפים", "Index",
+    "EmailTemplate", new { type = Constant.Branch }, new { @class = "btn btn-info main-btn" })
+    @Html.ActionLink("קמפיינים", "Index",
+    "EmailTemplate", new { type = Constant.Campaign }, new { @class = "btn btn-info main-btn" })
+</div>
+    

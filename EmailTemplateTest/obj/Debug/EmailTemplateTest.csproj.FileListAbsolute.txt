@@ -3,10 +3,10 @@ C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\Em
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EmailTemplateTest.pdb
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EmailTemplateteService.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EntityFramework.dll
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EmailTemplateteService.pdb
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EntityFramework.xml
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\obj\Debug\EmailTemplateTest.csprojResolveAssemblyReference.cache
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\obj\Debug\EmailTemplateTest.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\obj\Debug\EmailTemplateTest.pdb
-C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EntityFramework.SqlServer.xml

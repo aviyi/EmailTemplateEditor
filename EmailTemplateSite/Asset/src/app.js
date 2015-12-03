@@ -1,5 +1,5 @@
-﻿ 
-var app = angular.module('app', ['ui.router', 'ui.tinymce']);
+﻿
+var app = angular.module('app', ['ui.router', 'ui.tinymce', 'angucomplete']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -12,10 +12,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                controller: 'homeCtrl'
            })
     .state('/templateEditor', {
-        url: '/templateEditor/:type',
-        templateUrl: 'templaeEditorPage/template-editor-page.tpl.html',
-        controller: 'templateEditorPageCtrl'
+        url: '/templateEditor/:type/:id',
+        templateUrl: 'templaeEditorPage/template-editor.tpl.html',
+        controller: 'templateEditorCtrl'
     })
 
-    
+
 });

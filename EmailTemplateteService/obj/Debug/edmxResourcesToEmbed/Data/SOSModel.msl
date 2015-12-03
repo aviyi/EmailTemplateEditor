@@ -38,17 +38,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EmailsTemplates">
-      <EntityTypeMapping TypeName="SOSDBModel.EmailsTemplate">
-        <MappingFragment StoreEntitySet="EmailsTemplate">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Subject" ColumnName="Subject" />
-          <ScalarProperty Name="Body" ColumnName="Body" />
-          <ScalarProperty Name="brabch_num" ColumnName="brabch_num" />
-          <ScalarProperty Name="mis_campaign" ColumnName="mis_campaign" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="campains">
       <EntityTypeMapping TypeName="SOSDBModel.campain">
         <MappingFragment StoreEntitySet="campains">
@@ -62,6 +51,19 @@
           <ScalarProperty Name="meadken" ColumnName="meadken" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="tz_oved" ColumnName="tz_oved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailsTemplates">
+      <EntityTypeMapping TypeName="SOSDBModel.EmailsTemplate">
+        <MappingFragment StoreEntitySet="EmailsTemplate">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="brabch_num" ColumnName="brabch_num" />
+          <ScalarProperty Name="mis_campaign" ColumnName="mis_campaign" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

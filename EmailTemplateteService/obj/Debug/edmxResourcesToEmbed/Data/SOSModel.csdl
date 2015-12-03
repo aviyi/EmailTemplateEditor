@@ -37,29 +37,9 @@
     <Property Name="InscriptByOfer" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="EmailsTemplates" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="branches" ToRole="EmailsTemplate" />
   </EntityType>
-  <EntityType Name="EmailsTemplate">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="brabch_num" Type="Int16" />
-    <Property Name="mis_campaign" Type="Int32" />
-    <NavigationProperty Name="branch" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="EmailsTemplate" ToRole="branches" />
-  </EntityType>
   <EntityType Name="campain">
     <Key>
       <PropertyRef Name="mis_campain" />
-      <PropertyRef Name="teur_campain" />
-      <PropertyRef Name="oved_achrai" />
-      <PropertyRef Name="heara" />
-      <PropertyRef Name="ta_hazana" />
-      <PropertyRef Name="yozem" />
-      <PropertyRef Name="ta_idkun" />
-      <PropertyRef Name="meadken" />
-      <PropertyRef Name="status" />
-      <PropertyRef Name="tz_oved" />
     </Key>
     <Property Name="mis_campain" Type="Int32" Nullable="false" />
     <Property Name="teur_campain" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
@@ -71,6 +51,21 @@
     <Property Name="meadken" Type="Int32" Nullable="false" />
     <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="tz_oved" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EmailsTemplates" Relationship="Self.FK_EmailsTemplate_campains" FromRole="campains" ToRole="EmailsTemplate" />
+  </EntityType>
+  <EntityType Name="EmailsTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="brabch_num" Type="Int16" />
+    <Property Name="mis_campaign" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="branch" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="EmailsTemplate" ToRole="branches" />
+    <NavigationProperty Name="campain" Relationship="Self.FK_EmailsTemplate_campains" FromRole="EmailsTemplate" ToRole="campains" />
   </EntityType>
   <Association Name="FK_EmailsTemplate_EmailsTemplate">
     <End Role="branches" Type="Self.branch" Multiplicity="0..1" />
@@ -84,12 +79,28 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_EmailsTemplate_campains">
+    <End Role="campains" Type="Self.campain" Multiplicity="0..1" />
+    <End Role="EmailsTemplate" Type="Self.EmailsTemplate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="campains">
+        <PropertyRef Name="mis_campain" />
+      </Principal>
+      <Dependent Role="EmailsTemplate">
+        <PropertyRef Name="mis_campaign" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="SOSDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="branches" EntityType="Self.branch" />
-    <EntitySet Name="EmailsTemplates" EntityType="Self.EmailsTemplate" />
     <EntitySet Name="campains" EntityType="Self.campain" />
+    <EntitySet Name="EmailsTemplates" EntityType="Self.EmailsTemplate" />
     <AssociationSet Name="FK_EmailsTemplate_EmailsTemplate" Association="Self.FK_EmailsTemplate_EmailsTemplate">
       <End Role="branches" EntitySet="branches" />
+      <End Role="EmailsTemplate" EntitySet="EmailsTemplates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmailsTemplate_campains" Association="Self.FK_EmailsTemplate_campains">
+      <End Role="campains" EntitySet="campains" />
       <End Role="EmailsTemplate" EntitySet="EmailsTemplates" />
     </AssociationSet>
   </EntityContainer>

@@ -41,20 +41,9 @@
           <Property Name="InternetCycleVisible" Type="bit" Nullable="false" />
           <Property Name="InscriptByOfer" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'SOSDB.dbo.campains' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="campains">
           <Key>
             <PropertyRef Name="mis_campain" />
-            <PropertyRef Name="teur_campain" />
-            <PropertyRef Name="oved_achrai" />
-            <PropertyRef Name="heara" />
-            <PropertyRef Name="ta_hazana" />
-            <PropertyRef Name="yozem" />
-            <PropertyRef Name="ta_idkun" />
-            <PropertyRef Name="meadken" />
-            <PropertyRef Name="status" />
-            <PropertyRef Name="tz_oved" />
           </Key>
           <Property Name="mis_campain" Type="int" Nullable="false" />
           <Property Name="teur_campain" Type="char" MaxLength="100" Nullable="false" />
@@ -76,10 +65,21 @@ warning 6002: The table/view 'SOSDB.dbo.campains' does not have a primary key de
           <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
           <Property Name="brabch_num" Type="smallint" />
           <Property Name="mis_campaign" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK_EmailsTemplate_campains" />-->
+        <Association Name="FK_EmailsTemplate_campains">
+          <End Role="campains" Type="Self.campains" Multiplicity="0..1" />
+          <End Role="EmailsTemplate" Type="Self.EmailsTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campains">
+              <PropertyRef Name="mis_campain" />
+            </Principal>
+            <Dependent Role="EmailsTemplate">
+              <PropertyRef Name="mis_campaign" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EmailsTemplate_EmailsTemplate">
           <End Role="branches" Type="Self.branches" Multiplicity="0..1" />
           <End Role="EmailsTemplate" Type="Self.EmailsTemplate" Multiplicity="*" />
@@ -94,21 +94,12 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
         </Association>
         <EntityContainer Name="SOSDBModelStoreContainer">
           <EntitySet Name="branches" EntityType="Self.branches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="campains" EntityType="Self.campains" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmailsTemplate" EntityType="Self.EmailsTemplate" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="campains" EntityType="Self.campains" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [campains].[mis_campain] AS [mis_campain], 
-    [campains].[teur_campain] AS [teur_campain], 
-    [campains].[oved_achrai] AS [oved_achrai], 
-    [campains].[heara] AS [heara], 
-    [campains].[ta_hazana] AS [ta_hazana], 
-    [campains].[yozem] AS [yozem], 
-    [campains].[ta_idkun] AS [ta_idkun], 
-    [campains].[meadken] AS [meadken], 
-    [campains].[status] AS [status], 
-    [campains].[tz_oved] AS [tz_oved]
-    FROM [dbo].[campains] AS [campains]</DefiningQuery>
-          </EntitySet>
+          <AssociationSet Name="FK_EmailsTemplate_campains" Association="Self.FK_EmailsTemplate_campains">
+            <End Role="campains" EntitySet="campains" />
+            <End Role="EmailsTemplate" EntitySet="EmailsTemplate" />
+          </AssociationSet>
           <AssociationSet Name="FK_EmailsTemplate_EmailsTemplate" Association="Self.FK_EmailsTemplate_EmailsTemplate">
             <End Role="branches" EntitySet="branches" />
             <End Role="EmailsTemplate" EntitySet="EmailsTemplate" />
@@ -156,29 +147,9 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
           <Property Name="InscriptByOfer" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="EmailsTemplates" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="branches" ToRole="EmailsTemplate" />
         </EntityType>
-        <EntityType Name="EmailsTemplate">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="brabch_num" Type="Int16" />
-          <Property Name="mis_campaign" Type="Int32" />
-          <NavigationProperty Name="branch" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="EmailsTemplate" ToRole="branches" />
-        </EntityType>
         <EntityType Name="campain">
           <Key>
             <PropertyRef Name="mis_campain" />
-            <PropertyRef Name="teur_campain" />
-            <PropertyRef Name="oved_achrai" />
-            <PropertyRef Name="heara" />
-            <PropertyRef Name="ta_hazana" />
-            <PropertyRef Name="yozem" />
-            <PropertyRef Name="ta_idkun" />
-            <PropertyRef Name="meadken" />
-            <PropertyRef Name="status" />
-            <PropertyRef Name="tz_oved" />
           </Key>
           <Property Name="mis_campain" Type="Int32" Nullable="false" />
           <Property Name="teur_campain" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
@@ -190,6 +161,21 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
           <Property Name="meadken" Type="Int32" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="tz_oved" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmailsTemplates" Relationship="Self.FK_EmailsTemplate_campains" FromRole="campains" ToRole="EmailsTemplate" />
+        </EntityType>
+        <EntityType Name="EmailsTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="brabch_num" Type="Int16" />
+          <Property Name="mis_campaign" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="branch" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="EmailsTemplate" ToRole="branches" />
+          <NavigationProperty Name="campain" Relationship="Self.FK_EmailsTemplate_campains" FromRole="EmailsTemplate" ToRole="campains" />
         </EntityType>
         <Association Name="FK_EmailsTemplate_EmailsTemplate">
           <End Role="branches" Type="Self.branch" Multiplicity="0..1" />
@@ -203,12 +189,28 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EmailsTemplate_campains">
+          <End Role="campains" Type="Self.campain" Multiplicity="0..1" />
+          <End Role="EmailsTemplate" Type="Self.EmailsTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="campains">
+              <PropertyRef Name="mis_campain" />
+            </Principal>
+            <Dependent Role="EmailsTemplate">
+              <PropertyRef Name="mis_campaign" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SOSDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="branches" EntityType="Self.branch" />
-          <EntitySet Name="EmailsTemplates" EntityType="Self.EmailsTemplate" />
           <EntitySet Name="campains" EntityType="Self.campain" />
+          <EntitySet Name="EmailsTemplates" EntityType="Self.EmailsTemplate" />
           <AssociationSet Name="FK_EmailsTemplate_EmailsTemplate" Association="Self.FK_EmailsTemplate_EmailsTemplate">
             <End Role="branches" EntitySet="branches" />
+            <End Role="EmailsTemplate" EntitySet="EmailsTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailsTemplate_campains" Association="Self.FK_EmailsTemplate_campains">
+            <End Role="campains" EntitySet="campains" />
             <End Role="EmailsTemplate" EntitySet="EmailsTemplates" />
           </AssociationSet>
         </EntityContainer>
@@ -255,17 +257,6 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EmailsTemplates">
-            <EntityTypeMapping TypeName="SOSDBModel.EmailsTemplate">
-              <MappingFragment StoreEntitySet="EmailsTemplate">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="Body" ColumnName="Body" />
-                <ScalarProperty Name="brabch_num" ColumnName="brabch_num" />
-                <ScalarProperty Name="mis_campaign" ColumnName="mis_campaign" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="campains">
             <EntityTypeMapping TypeName="SOSDBModel.campain">
               <MappingFragment StoreEntitySet="campains">
@@ -279,6 +270,19 @@ warning 6035: The relationship 'FK_EmailsTemplate_campains' has columns that are
                 <ScalarProperty Name="meadken" ColumnName="meadken" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="tz_oved" ColumnName="tz_oved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailsTemplates">
+            <EntityTypeMapping TypeName="SOSDBModel.EmailsTemplate">
+              <MappingFragment StoreEntitySet="EmailsTemplate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="brabch_num" ColumnName="brabch_num" />
+                <ScalarProperty Name="mis_campaign" ColumnName="mis_campaign" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

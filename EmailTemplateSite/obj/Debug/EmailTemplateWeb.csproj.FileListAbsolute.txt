@@ -1,3 +1,4 @@
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\obj\Debug\EmailTemplateWeb.csprojResolveAssemblyReference.cache
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\roslyn\csc.exe
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -14,6 +15,7 @@ C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\EmailTem
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\EmailTemplateSite.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\EmailTemplateSite.pdb
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\Antlr3.Runtime.dll
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\EmailTemplateteService.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\EntityFramework.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\EntityFramework.SqlServer.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\Microsoft.AspNet.Identity.Core.dll
@@ -44,6 +46,7 @@ C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\System.W
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\System.Web.WebPages.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\System.Web.WebPages.Razor.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\WebGrease.dll
+C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\EmailTemplateteService.pdb
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\Newtonsoft.Json.xml
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\System.Net.Http.Formatting.xml
@@ -72,8 +75,5 @@ C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\Microsof
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\System.Web.Http.Owin.xml
-C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\obj\Debug\EmailTemplateWeb.csprojResolveAssemblyReference.cache
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\obj\Debug\EmailTemplateSite.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\obj\Debug\EmailTemplateSite.pdb
-C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\EmailTemplateteService.dll
-C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateSite\bin\EmailTemplateteService.pdb

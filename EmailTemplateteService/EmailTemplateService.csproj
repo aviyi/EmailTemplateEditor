@@ -79,6 +79,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SOSModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\EmailTemplateInfo.cs" />
     <Compile Include="Entities\BranchInfo.cs" />
     <Compile Include="Entities\CampaignInfo.cs" />
     <Compile Include="EmailTemplateService.cs" />

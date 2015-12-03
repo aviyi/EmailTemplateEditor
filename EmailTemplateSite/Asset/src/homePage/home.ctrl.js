@@ -3,7 +3,9 @@
 
     $scope.onBranchClicked = function () {
 
-        goTo('/templateEditor', { type: 'branch' })
+
+
+        goTo('/templateEditor', { type: 'brach' })
     }
     $scope.onCampaignClicked = function () {
 
