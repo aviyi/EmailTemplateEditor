@@ -7,6 +7,7 @@ using EmailTemplateWeb.Globals;
 
 namespace EmailTemplateWeb.Controllers
 {
+    [Authorize]
     public class EmailTemplateController : Controller
     {
 
