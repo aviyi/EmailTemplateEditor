@@ -178,8 +178,8 @@ namespace EmailTemplateWeb.Controllers
             {
                 var emailTemplateInfo = _emailTemplateService.GetEmailTemplateById(emailTemplateViewModel.Id);
 
-                emailTemplateViewModel.Subject = emailTemplateViewModel.Subject;
-                emailTemplateViewModel.Body = emailTemplateViewModel.Body;
+                emailTemplateInfo.Subject = emailTemplateViewModel.Subject;
+                emailTemplateInfo.Body = emailTemplateViewModel.Body;
                 _emailTemplateService.EditEmailTemplate(emailTemplateInfo);
 
             }

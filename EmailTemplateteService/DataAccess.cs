@@ -96,7 +96,7 @@ namespace EmailTemplateteService
             bool isSuccess;
             try
             {
-                var tempalte = _ctx.EmailsTemplates.Where(e => e.Id == templateId).First();
+                var tempalte = _ctx.EmailsTemplates.First(e => e.Id == templateId);
                 tempalte.IsDeleted = true;
                 _ctx.SaveChanges();
                 isSuccess = true;
@@ -116,8 +116,9 @@ namespace EmailTemplateteService
             {
 
                 var original= _ctx.EmailsTemplates.First(e => e.Id == emailTemplate.Id);
-                _ctx.Entry(original).CurrentValues.SetValues(emailTemplate);
 
+                original.Subject = emailTemplate.Subject;
+                original.Body = emailTemplate.Body;
                 _ctx.SaveChanges();
                 isSuccess = true;
             }

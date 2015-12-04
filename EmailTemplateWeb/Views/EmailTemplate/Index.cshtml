@@ -21,38 +21,55 @@ else
 <p>
     @Html.ActionLink("צור טמפלט חדש", "Create", new { type = ViewBag.type })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BranchName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Subject)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Body)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div class="table-bordered">
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BranchName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Body)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id , type = ViewBag.type }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id, type = ViewBag.type })
-            </td>
+            <th>    
+                @if (ViewBag.type == Constant.Branch)
+            {
+                    @Html.DisplayNameFor(model => model.BranchName)
+                }
+                else
+                {
+                    @Html.DisplayNameFor(model => model.CampaignName)
+                }
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Body)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
-    
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (ViewBag.type == Constant.Branch)
+                {
+                        @Html.DisplayFor(modelItem => item.BranchName)
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.CampaignName)
+                    }
+                </td>
+                <td class="col-md-2">
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+                <td>
+                    @Html.Raw(item.Body)
+
+                </td>
+                <td>
+                    @Html.ActionLink("עריכה", "Edit", new { id = item.Id, type = ViewBag.type }) |
+                    @Html.ActionLink("מחיקה", "Delete", new { id = item.Id, type = ViewBag.type })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>      

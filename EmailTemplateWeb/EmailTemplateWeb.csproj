@@ -239,7 +239,6 @@
     <Content Include="Views\EmailTemplate\Index.cshtml" />
     <Content Include="Views\EmailTemplate\Delete.cshtml" />
     <Content Include="Views\EmailTemplate\Create.cshtml" />
-    <Content Include="Views\Shared\_CKEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

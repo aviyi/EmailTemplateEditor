@@ -4,39 +4,29 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>מחיקה</h2>
 
 <h3>האם אתה רוצה למחוק?</h3>
-<div>
-    <h4>EmailTemplateViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BranchName)
-        </dt>
+<div id="email-template-delte-page-container">
 
-        <dd>
-            @Html.DisplayFor(model => model.BranchName)
-        </dd>
+    <div>
+        <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Subject)
-        </dt>
-
-        <dd>
+            <h4>
+                @Html.DisplayNameFor(model => model.Subject):
+            </h4>
             @Html.DisplayFor(model => model.Subject)
-        </dd>
+            <hr />
+        </div>
+        <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
+            <h4>
+                @Html.DisplayNameFor(model => model.Body):
+            </h4>
+            @Html.Raw(Model.Body)
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Body)
-        </dd>
-
-    </dl>
-
+    </div>
     @using (Html.BeginForm("Delete", "EmailTemplate", new { type = Request.QueryString["type"] }))
     {
         @Html.AntiForgeryToken()

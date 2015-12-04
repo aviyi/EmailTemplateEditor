@@ -9,7 +9,7 @@
 
 </head>
 <body style="direction:rtl">
-    <div class="navbar-inverse .navbar navbar-fixed-top"  id="header" >
+    <div class="navbar-inverse .navbar navbar-fixed-top" id="header">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,11 +19,11 @@
                 </button>
             </div>
             <div class="navbar-collapse collapse" id="login-container-partial">
-
-
                 @Html.Partial("_LoginPartial")
-                 
 
+            </div>
+            <div>
+                @Html.ActionLink(" ", "Index", "Home", new { id = "home-btn", @class = "btn glyphicon glyphicon-home" })
             </div>
         </div>
     </div>

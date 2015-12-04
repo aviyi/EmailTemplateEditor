@@ -20,6 +20,19 @@
     background-color: #39b3d7;
 }
 
+#home-btn {
+
+color:white;
+font-size:20px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+.table tbody > tr > th {
+    text-align: right;
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -30,10 +43,6 @@ textarea {
 #login-container-partial {
     float: left;
     color: white !important;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-    color: white;
 }
 
 #home-page-container {
