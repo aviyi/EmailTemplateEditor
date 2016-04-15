@@ -46,11 +46,6 @@ namespace EmailTemplateWeb.Controllers
 
         }
 
-        private EmailTemplateInfo GetEmailTemplateById(int id)
-        {
-            return _emailTemplateService.GetEmailTemplateById(id);
-        }
-
         [HttpPost]
         [ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
@@ -83,11 +78,11 @@ namespace EmailTemplateWeb.Controllers
         [HttpPost]
         [ActionName("Create")]
         [ValidateInput(false)]
-        public ActionResult CreateEmailTemplate(EmailTemplateViewModel emailTemplateViewModel)
+        public ActionResult CreateOrUpdateEmailTemplate(EmailTemplateViewModel emailTemplateViewModel)
         {
 
             var type = Request.QueryString["type"];
-            CreateEmailTemplate(emailTemplateViewModel, type);
+            CreateOrUpdateEmailTemplate(emailTemplateViewModel, type);
             return RedirectToAction("Index", new { type = type });
 
         }
@@ -100,8 +95,6 @@ namespace EmailTemplateWeb.Controllers
             var emailTemplate = _emailTemplateService.GetEmailTemplateById(Id);
             if (emailTemplate == null)
                 return HttpNotFound();
-
-
             return View("Create", ToEmailTemplateViewModel(emailTemplate));
         }
 
@@ -110,11 +103,9 @@ namespace EmailTemplateWeb.Controllers
         [ActionName("Edit")]
         public ActionResult EditConfirmation(EmailTemplateViewModel emailTemplateViewModel)
         {
-
             if (ModelState.IsValid)
             {
                 var type = Request.QueryString["type"];
-
                 return RedirectToAction("Index", new { type = type });
             }
             else
@@ -136,6 +127,12 @@ namespace EmailTemplateWeb.Controllers
             };
         }
 
+        private EmailTemplateInfo GetEmailTemplateById(int id)
+        {
+            return _emailTemplateService.GetEmailTemplateById(id);
+        }
+
+
         private IEnumerable<SelectListItem> GetBranches()
         {
             return _emailTemplateService.GetBranchesDoNotHaveTemplate().Select(b => new SelectListItem { Text = b.Name, Value = b.Id.ToString() });
@@ -155,35 +152,39 @@ namespace EmailTemplateWeb.Controllers
 
         }
 
-        private void CreateEmailTemplate(EmailTemplateViewModel emailTemplateViewModel, string type)
+        private void CreateOrUpdateEmailTemplate(EmailTemplateViewModel emailTemplateViewModel, string type)
         {
-            string selectedValue = "";
-            //Insert 
 
             if (emailTemplateViewModel.Id == 0)
-            {
-                short? branchId = null;
-                int? campaignId = null;
-
-                selectedValue = Request.Form["listItemsDD"].ToString();
-                if (type == Constant.Branch)
-                    branchId = short.Parse(selectedValue);
-                else
-                    campaignId = int.Parse(selectedValue);
-                _emailTemplateService.CreateEmailTemplate(campaignId, branchId,
-                   emailTemplateViewModel.Subject, emailTemplateViewModel.Body);
-            }
+                Create(emailTemplateViewModel, type);
 
             else
-            {
-                var emailTemplateInfo = _emailTemplateService.GetEmailTemplateById(emailTemplateViewModel.Id);
+                Update(emailTemplateViewModel);
 
-                emailTemplateInfo.Subject = emailTemplateViewModel.Subject;
-                emailTemplateInfo.Body = emailTemplateViewModel.Body;
-                _emailTemplateService.EditEmailTemplate(emailTemplateInfo);
+        }
 
-            }
+        private void Update(EmailTemplateViewModel emailTemplateViewModel)
+        {
+            var emailTemplateInfo = _emailTemplateService.GetEmailTemplateById(emailTemplateViewModel.Id);
+            emailTemplateInfo.Subject = emailTemplateViewModel.Subject;
+            emailTemplateInfo.Body = emailTemplateViewModel.Body;
+            _emailTemplateService.EditEmailTemplate(emailTemplateInfo);
+        }
 
+        private string Create(EmailTemplateViewModel emailTemplateViewModel, string type)
+        {
+            string selectedValue;
+            short? branchId = null;
+            int? campaignId = null;
+
+            selectedValue = Request.Form["listItemsDD"].ToString();
+            if (type == Constant.Branch)
+                branchId = short.Parse(selectedValue);
+            else
+            campaignId = int.Parse(selectedValue);
+            _emailTemplateService.CreateEmailTemplate(campaignId, branchId,
+            emailTemplateViewModel.Subject, emailTemplateViewModel.Body);
+            return selectedValue;
         }
 
         #endregion

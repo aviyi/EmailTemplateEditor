@@ -31,16 +31,13 @@ namespace EmailTemplateteService
 
             }
 
-
             return isAdded;
         }
 
 
         public List<branch> GetBranches()
         {
-
             return _ctx.branches.Where(b => b.status == "פ").OrderBy(b => b.name).ToList();
-
         }
 
         public List<campain> GetCampaigns()
@@ -54,8 +51,6 @@ namespace EmailTemplateteService
         public List<EmailsTemplate> GetEmailTemplate()
         {
             return _ctx.EmailsTemplates.Where(e => e.IsDeleted == false).ToList();
-
-
         }
 
 
@@ -115,7 +110,7 @@ namespace EmailTemplateteService
             try
             {
 
-                var original= _ctx.EmailsTemplates.First(e => e.Id == emailTemplate.Id);
+                var original = _ctx.EmailsTemplates.First(e => e.Id == emailTemplate.Id);
 
                 original.Subject = emailTemplate.Subject;
                 original.Body = emailTemplate.Body;
