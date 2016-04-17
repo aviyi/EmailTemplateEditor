@@ -58,7 +58,7 @@ namespace EmailTemplateWeb.Models
         [Display(Name = "סיסמה")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "לשמור ?")]
         public bool RememberMe { get; set; }
     }
 

@@ -60,3 +60,7 @@ textarea {
         font-size: 20px;
         color: white;
     }
+
+    .checkbox{
+        float:right;
+    }

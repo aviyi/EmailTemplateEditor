@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using System;
 using EmailTemplateteService.Data;
 
 namespace EmailTemplateteService
@@ -13,7 +12,8 @@ namespace EmailTemplateteService
             _dataBase = dataBase;
         }
 
-        public bool CreateEmailTemplate(int? campaignId, short? branchId, string subject, string body)
+        #region Public
+        public bool Create(int? campaignId, short? branchId, string subject, string body)
         {
             return _dataBase.SaveEmailTemplate(new TemplateParams()
             {
@@ -24,74 +24,20 @@ namespace EmailTemplateteService
             });
         }
 
-
-
-        public List<BranchInfo> GetBranchesDoNotHaveTemplate()
+        public bool Edit(EmailTemplateInfo emailTemplateInfo)
         {
-            return _dataBase.GetBranches().Where(b => b.EmailsTemplates.Count == 0 || !HasTemplate(b.EmailsTemplates)).Select(b => new BranchInfo
-            {
-                Id = b.branch_num,
-                Name = b.name,
-            }).ToList();
-
+            return _dataBase.EditEmailTemplate(new EmailsTemplate { Id = emailTemplateInfo.Id, Body = emailTemplateInfo.Body, Subject = emailTemplateInfo.Subject });
         }
 
-        public List<CampaignInfo> GetCampaignsDoNotHaveTemplate()
-        {
-            return _dataBase.GetCampaigns().Where(b => b.EmailsTemplates.Count == 0 || !HasTemplate(b.EmailsTemplates)).Select(c => new CampaignInfo
-            {
-                Id = c.mis_campain,
-                Name = c.teur_campain
-            }).ToList();
 
+        public bool DeleteTemplate(int templateId)
+        {
+            return _dataBase.DeleteTemplate(templateId);
         }
 
-        private bool HasTemplate(ICollection<EmailsTemplate> templates)
+        public EmailTemplateInfo GetById(int id)
         {
-            var hasTemplate = false;
-            foreach (var item in templates)
-            {
-                if (!item.IsDeleted)
-                    hasTemplate = true;
-            }
-            return hasTemplate;
-        }
-
-        public List<EmailTemplateInfo> GetlAlEmailTemplatesForBranches()
-        {
-            return _dataBase.GetlAlEmailTemplatesForBranches().Select(e => new EmailTemplateInfo
-            {
-                Id = e.Id,
-                Body = e.Body,
-                BranchInfo = new BranchInfo
-                {
-                    Id = e.branch.branch_num,
-                    Name = e.branch.name
-                },
-                Subject = e.Subject
-            }).ToList();
-        }
-
-        public List<EmailTemplateInfo> GetlAlEmailTemplatesForCampaigns()
-        {
-
-            return _dataBase.GetlAlEmailTemplatesForCampaigns().Select(e => new EmailTemplateInfo
-            {
-                Id = e.Id,
-                Body = e.Body,
-                CampaignInfo = new CampaignInfo
-                {
-                    Id = e.campain.mis_campain,
-                    Name = e.campain.teur_campain
-                },
-                Subject = e.Subject
-            }).ToList();
-        }
-
-        public EmailTemplateInfo GetEmailTemplateById(int templateId)
-        {
-            var template = _dataBase.GetEmailTemplateById(templateId);
-
+            var template = _dataBase.GetEmailTemplateById(id);
             var emailTemplateInfo = new EmailTemplateInfo();
 
 
@@ -117,14 +63,73 @@ namespace EmailTemplateteService
             return emailTemplateInfo;
         }
 
-        public bool DeleteTemplate(int templateId)
+
+        public List<BranchInfo> GetBranchesDoNotHaveTemplate()
         {
-            return _dataBase.DeleteTemplate(templateId);
+            return _dataBase.GetBranches().Where(b => b.EmailsTemplates.Count == 0 || !HasTemplate(b.EmailsTemplates)).Select(b => new BranchInfo
+            {
+                Id = b.branch_num,
+                Name = b.name,
+            }).ToList();
+
         }
 
-        public bool EditEmailTemplate(EmailTemplateInfo emailTemplateInfo)
+        public List<CampaignInfo> GetCampaignsDoNotHaveTemplate()
         {
-            return _dataBase.EditEmailTemplate(new EmailsTemplate { Id = emailTemplateInfo.Id, Body = emailTemplateInfo.Body, Subject = emailTemplateInfo.Subject });
+            return _dataBase.GetCampaigns().Where(b => b.EmailsTemplates.Count == 0 || !HasTemplate(b.EmailsTemplates)).Select(c => new CampaignInfo
+            {
+                Id = c.mis_campain,
+                Name = c.teur_campain
+            }).ToList();
+
         }
+
+        public List<EmailTemplateInfo> GetAllForBranches()
+        {
+            return _dataBase.GetlAlEmailTemplatesForBranches().Select(e => new EmailTemplateInfo
+            {
+                Id = e.Id,
+                Body = e.Body,
+                BranchInfo = new BranchInfo
+                {
+                    Id = e.branch.branch_num,
+                    Name = e.branch.name
+                },
+                Subject = e.Subject
+            }).ToList();
+        }
+
+        public List<EmailTemplateInfo> GetlAllForCampaigns()
+        {
+
+            return _dataBase.GetlAlEmailTemplatesForCampaigns().Select(e => new EmailTemplateInfo
+            {
+                Id = e.Id,
+                Body = e.Body,
+                CampaignInfo = new CampaignInfo
+                {
+                    Id = e.campain.mis_campain,
+                    Name = e.campain.teur_campain
+                },
+                Subject = e.Subject
+            }).ToList();
+        }
+
+        #endregion
+        
+        #region Private 
+
+        private bool HasTemplate(ICollection<EmailsTemplate> templates)
+        {
+            var hasTemplate = false;
+            foreach (var item in templates)
+            {
+                if (!item.IsDeleted)
+                    hasTemplate = true;
+            }
+            return hasTemplate;
+        }
+
+        #endregion
     }
 }

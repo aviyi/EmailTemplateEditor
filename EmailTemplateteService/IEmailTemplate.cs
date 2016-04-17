@@ -6,17 +6,17 @@ namespace EmailTemplateteService
     {
         List<CampaignInfo> GetCampaignsDoNotHaveTemplate();
         List<BranchInfo> GetBranchesDoNotHaveTemplate();
-        bool CreateEmailTemplate(int? campaignId,short? branchId ,string subject, string body);
+        bool Create(int? campaignId,short? branchId ,string subject, string body);
          
-        List<EmailTemplateInfo> GetlAlEmailTemplatesForBranches();
+        List<EmailTemplateInfo> GetAllForBranches();
 
 
-        List<EmailTemplateInfo> GetlAlEmailTemplatesForCampaigns();
+        List<EmailTemplateInfo> GetlAllForCampaigns();
 
-        EmailTemplateInfo GetEmailTemplateById(int templateId);
+        EmailTemplateInfo GetById(int templateId);
         bool DeleteTemplate(int templateId);
 
 
-        bool EditEmailTemplate(EmailTemplateInfo emailTemplateInfo);
+        bool Edit(EmailTemplateInfo emailTemplateInfo);
     }
 }

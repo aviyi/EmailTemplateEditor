@@ -78,7 +78,7 @@ namespace EmailTemplateWeb.Controllers
         [HttpPost]
         [ActionName("Create")]
         [ValidateInput(false)]
-        public ActionResult CreateOrUpdateEmailTemplate(EmailTemplateViewModel emailTemplateViewModel)
+        public ActionResult CreateOrUpdate(EmailTemplateViewModel emailTemplateViewModel)
         {
 
             var type = Request.QueryString["type"];
@@ -92,7 +92,7 @@ namespace EmailTemplateWeb.Controllers
         public ActionResult Edit(int Id)
         {
             ViewBag.isEditMode = true;
-            var emailTemplate = _emailTemplateService.GetEmailTemplateById(Id);
+            var emailTemplate = _emailTemplateService.GetById(Id);
             if (emailTemplate == null)
                 return HttpNotFound();
             return View("Create", ToEmailTemplateViewModel(emailTemplate));
@@ -129,7 +129,7 @@ namespace EmailTemplateWeb.Controllers
 
         private EmailTemplateInfo GetEmailTemplateById(int id)
         {
-            return _emailTemplateService.GetEmailTemplateById(id);
+            return _emailTemplateService.GetById(id);
         }
 
 
@@ -143,12 +143,12 @@ namespace EmailTemplateWeb.Controllers
         }
         private List<EmailTemplateViewModel> GetEmailsTemplateForBranches()
         {
-            return _emailTemplateService.GetlAlEmailTemplatesForBranches().Select(e => new EmailTemplateViewModel { Body = e.Body, BranchName = e.BranchInfo.Name, Subject = e.Subject, Id = e.Id }).ToList();
+            return _emailTemplateService.GetAllForBranches().Select(e => new EmailTemplateViewModel { Body = e.Body, BranchName = e.BranchInfo.Name, Subject = e.Subject, Id = e.Id }).ToList();
 
         }
         private List<EmailTemplateViewModel> GetEmailsTemplateForCampaigns()
         {
-            return _emailTemplateService.GetlAlEmailTemplatesForCampaigns().Select(e => new EmailTemplateViewModel { Body = e.Body, CampaignName = e.CampaignInfo.Name, Subject = e.Subject, Id = e.Id }).ToList();
+            return _emailTemplateService.GetlAllForCampaigns().Select(e => new EmailTemplateViewModel { Body = e.Body, CampaignName = e.CampaignInfo.Name, Subject = e.Subject, Id = e.Id }).ToList();
 
         }
 
@@ -165,10 +165,10 @@ namespace EmailTemplateWeb.Controllers
 
         private void Update(EmailTemplateViewModel emailTemplateViewModel)
         {
-            var emailTemplateInfo = _emailTemplateService.GetEmailTemplateById(emailTemplateViewModel.Id);
+            var emailTemplateInfo = _emailTemplateService.GetById(emailTemplateViewModel.Id);
             emailTemplateInfo.Subject = emailTemplateViewModel.Subject;
             emailTemplateInfo.Body = emailTemplateViewModel.Body;
-            _emailTemplateService.EditEmailTemplate(emailTemplateInfo);
+            _emailTemplateService.Edit(emailTemplateInfo);
         }
 
         private string Create(EmailTemplateViewModel emailTemplateViewModel, string type)
@@ -182,7 +182,7 @@ namespace EmailTemplateWeb.Controllers
                 branchId = short.Parse(selectedValue);
             else
             campaignId = int.Parse(selectedValue);
-            _emailTemplateService.CreateEmailTemplate(campaignId, branchId,
+            _emailTemplateService.Create(campaignId, branchId,
             emailTemplateViewModel.Subject, emailTemplateViewModel.Body);
             return selectedValue;
         }

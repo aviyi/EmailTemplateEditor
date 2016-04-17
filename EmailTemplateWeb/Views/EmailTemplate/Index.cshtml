@@ -36,11 +36,7 @@ else
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Subject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Body)
-            </th>
-            <th></th>
+            </th> 
         </tr>
 
         @foreach (var item in Model)
@@ -59,11 +55,7 @@ else
                 <td class="col-md-2">
                     @Html.DisplayFor(modelItem => item.Subject)
                 </td>
-                <td>
-                    @Html.Raw(item.Body)
-
-                </td>
-                <td>
+                 <td>
                     @Html.ActionLink("עריכה", "Edit", new { id = item.Id, type = ViewBag.type }) |
                     @Html.ActionLink("מחיקה", "Delete", new { id = item.Id, type = ViewBag.type })
                 </td>
