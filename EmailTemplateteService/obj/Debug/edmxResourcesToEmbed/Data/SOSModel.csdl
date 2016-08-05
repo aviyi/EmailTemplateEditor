@@ -66,6 +66,7 @@
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
     <NavigationProperty Name="branch" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="EmailsTemplate" ToRole="branches" />
     <NavigationProperty Name="campain" Relationship="Self.FK_EmailsTemplate_campains" FromRole="EmailsTemplate" ToRole="campains" />
+    <Property Name="Sug_lid" Type="Boolean" Nullable="false" />
   </EntityType>
   <Association Name="FK_EmailsTemplate_EmailsTemplate">
     <End Role="branches" Type="Self.branch" Multiplicity="0..1" />

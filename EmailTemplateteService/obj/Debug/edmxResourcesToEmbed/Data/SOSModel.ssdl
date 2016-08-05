@@ -62,6 +62,7 @@
     <Property Name="mis_campaign" Type="int" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Sug_lid" Type="bit" Nullable="false" />
   </EntityType>
   <Association Name="FK_EmailsTemplate_campains">
     <End Role="campains" Type="Self.campains" Multiplicity="0..1" />

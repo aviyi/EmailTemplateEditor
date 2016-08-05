@@ -4,9 +4,22 @@
 }
 <div id="home-page-container">
     <h1>בחר </h1>
-    @Html.ActionLink("סניפים", "Index",
+    <div id="btns-container">
+        @Html.ActionLink("סניפים", "Index",
     "EmailTemplate", new { type = Constant.Branch }, new { @class = "btn btn-info main-btn" })
-    @Html.ActionLink("קמפיינים", "Index",
+        @Html.ActionLink("קמפיינים", "Index",
     "EmailTemplate", new { type = Constant.Campaign }, new { @class = "btn btn-info main-btn" })
+        @*@Html.ActionLink("אירועים", "Index",
+            "EmailTemplate", new { type = Constant.Event }, new { @class = "btn btn-info main-btn", @id = "events-btn" })*@
+
+    </div>
+
+    @*<div style="display:none" id="dd-branches-container">
+
+            @Html.DropDownList("branchesDD", "בחר")
+
+            <input type="button" id="create-template" value="צור טמפלט" class="btn btn-info main-btn" />
+
+        </div>*@
 </div>
-    
+

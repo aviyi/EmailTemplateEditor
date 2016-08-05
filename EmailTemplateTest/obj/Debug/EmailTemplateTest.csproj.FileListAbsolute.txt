@@ -10,3 +10,15 @@ C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\bin\Debug\En
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\obj\Debug\EmailTemplateTest.csprojResolveAssemblyReference.cache
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\obj\Debug\EmailTemplateTest.dll
 C:\Users\Avi\Documents\GitHub\EmailTemplateEditor\EmailTemplateTest\obj\Debug\EmailTemplateTest.pdb
+C:\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EmailTemplateTest.dll.config
+C:\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EmailTemplateTest.dll
+C:\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EmailTemplateTest.pdb
+C:\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EmailTemplateteService.dll
+C:\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EntityFramework.dll
+C:\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EntityFramework.SqlServer.dll
+C:\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EmailTemplateteService.pdb
+C:\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EntityFramework.xml
+C:\EmailTemplateEditor\EmailTemplateTest\bin\Debug\EntityFramework.SqlServer.xml
+C:\EmailTemplateEditor\EmailTemplateTest\obj\Debug\EmailTemplateTest.csprojResolveAssemblyReference.cache
+C:\EmailTemplateEditor\EmailTemplateTest\obj\Debug\EmailTemplateTest.dll
+C:\EmailTemplateEditor\EmailTemplateTest\obj\Debug\EmailTemplateTest.pdb

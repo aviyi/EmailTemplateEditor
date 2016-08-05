@@ -21,6 +21,8 @@ namespace EmailTemplateteService
         List<EmailsTemplate> GetlAlEmailTemplatesForBranches();
         List<EmailsTemplate> GetlAlEmailTemplatesForCampaigns();
         EmailsTemplate GetEmailTemplateById(int templateId);
+
+        List<EmailsTemplate> GetEventsEmailTemplatesById(int branchId);
         bool DeleteTemplate(int templateId);
 
         bool EditEmailTemplate(EmailsTemplate emailTemplate);

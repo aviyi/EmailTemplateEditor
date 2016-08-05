@@ -24,7 +24,7 @@ else
 <div class="table-bordered">
     <table class="table">
         <tr>
-            <th>    
+            <th>
                 @if (ViewBag.type == Constant.Branch)
             {
                     @Html.DisplayNameFor(model => model.BranchName)
@@ -36,7 +36,7 @@ else
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Subject)
-            </th> 
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -45,17 +45,17 @@ else
                 <td>
                     @if (ViewBag.type == Constant.Branch)
                 {
-                        @Html.DisplayFor(modelItem => item.BranchName)
+                    @Html.DisplayFor(modelItem => item.BranchName)
                     }
                     else
                     {
-                        @Html.DisplayFor(modelItem => item.CampaignName)
+                    @Html.DisplayFor(modelItem => item.CampaignName)
                     }
                 </td>
                 <td class="col-md-2">
                     @Html.DisplayFor(modelItem => item.Subject)
                 </td>
-                 <td>
+                <td>
                     @Html.ActionLink("עריכה", "Edit", new { id = item.Id, type = ViewBag.type }) |
                     @Html.ActionLink("מחיקה", "Delete", new { id = item.Id, type = ViewBag.type })
                 </td>

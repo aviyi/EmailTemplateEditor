@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SOSDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SOSDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="branches">
           <Key>
             <PropertyRef Name="branch_num" />
@@ -67,6 +67,7 @@
           <Property Name="mis_campaign" Type="int" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Sug_lid" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_EmailsTemplate_campains">
           <End Role="campains" Type="Self.campains" Multiplicity="0..1" />
@@ -105,8 +106,7 @@
             <End Role="EmailsTemplate" EntitySet="EmailsTemplate" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SOSDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -176,6 +176,7 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
           <NavigationProperty Name="branch" Relationship="Self.FK_EmailsTemplate_EmailsTemplate" FromRole="EmailsTemplate" ToRole="branches" />
           <NavigationProperty Name="campain" Relationship="Self.FK_EmailsTemplate_campains" FromRole="EmailsTemplate" ToRole="campains" />
+          <Property Name="Sug_lid" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_EmailsTemplate_EmailsTemplate">
           <End Role="branches" Type="Self.branch" Multiplicity="0..1" />
@@ -276,6 +277,7 @@
           <EntitySetMapping Name="EmailsTemplates">
             <EntityTypeMapping TypeName="SOSDBModel.EmailsTemplate">
               <MappingFragment StoreEntitySet="EmailsTemplate">
+                <ScalarProperty Name="Sug_lid" ColumnName="Sug_lid" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Subject" ColumnName="Subject" />
                 <ScalarProperty Name="Body" ColumnName="Body" />

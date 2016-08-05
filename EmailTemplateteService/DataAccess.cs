@@ -123,5 +123,10 @@ namespace EmailTemplateteService
             }
             return isSuccess;
         }
+
+        public List<EmailsTemplate> GetEventsEmailTemplatesById(int branchId)
+        {
+            return _ctx.EmailsTemplates.Where(e => e.brabch_num == branchId && e.Sug_lid == true).ToList();
+        }
     }
 }

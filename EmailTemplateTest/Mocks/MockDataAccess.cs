@@ -92,6 +92,17 @@ namespace EmailTemplateTest.Mocks
         {
             throw new NotImplementedException();
         }
+         
+
+        List<EmailsTemplate> GetEventsEmailTemplatesById(int branchId)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<EmailTemplateteService.Data.EmailsTemplate> IDataAccess.GetEventsEmailTemplatesById(int branchId)
+        {
+            throw new NotImplementedException();
+        }
 
 
         #endregion

@@ -21,6 +21,7 @@ namespace EmailTemplateteService.Data
         public Nullable<int> mis_campaign { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime CreatedDate { get; set; }
+        public bool Sug_lid { get; set; }
     
         public virtual branch branch { get; set; }
         public virtual campain campain { get; set; }

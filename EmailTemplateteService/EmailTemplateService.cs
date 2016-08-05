@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using EmailTemplateteService.Data;
+using System;
 
 namespace EmailTemplateteService
 {
@@ -116,7 +117,7 @@ namespace EmailTemplateteService
         }
 
         #endregion
-        
+
         #region Private 
 
         private bool HasTemplate(ICollection<EmailsTemplate> templates)
@@ -128,6 +129,11 @@ namespace EmailTemplateteService
                     hasTemplate = true;
             }
             return hasTemplate;
+        }
+
+        public List<branch> GetBranches()
+        {
+            return _dataBase.GetBranches();
         }
 
         #endregion

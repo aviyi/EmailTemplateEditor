@@ -21,9 +21,8 @@
 }
 
 #home-btn {
-
-color:white;
-font-size:20px;
+    color: white;
+    font-size: 20px;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -40,6 +39,16 @@ textarea {
     max-width: 280px;
 }
 
+.input-no-valid {
+     
+    border: 1px solid red !important;
+}
+.btn{
+    margin-top:10px;
+}
+
+
+
 #login-container-partial {
     float: left;
     color: white !important;
@@ -54,13 +63,17 @@ textarea {
 
 
     #home-page-container .main-btn {
-        width: 200px;
+        width: 180px;
         height: 100px;
         line-height: 82px;
         font-size: 20px;
         color: white;
     }
 
-    .checkbox{
-        float:right;
+    #home-page-container #branchesDD.no-valid {
+        border: 1px solid red;
     }
+
+.checkbox {
+    float: right;
+}

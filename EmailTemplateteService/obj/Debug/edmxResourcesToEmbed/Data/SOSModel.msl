@@ -57,6 +57,7 @@
     <EntitySetMapping Name="EmailsTemplates">
       <EntityTypeMapping TypeName="SOSDBModel.EmailsTemplate">
         <MappingFragment StoreEntitySet="EmailsTemplate">
+          <ScalarProperty Name="Sug_lid" ColumnName="Sug_lid" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Subject" ColumnName="Subject" />
           <ScalarProperty Name="Body" ColumnName="Body" />
