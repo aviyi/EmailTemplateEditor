@@ -20,6 +20,5 @@ C:\EmailTemplateEditor\EmailTemplateteService\bin\Debug\EntityFramework.dll
 C:\EmailTemplateEditor\EmailTemplateteService\bin\Debug\EntityFramework.SqlServer.dll
 C:\EmailTemplateEditor\EmailTemplateteService\bin\Debug\EntityFramework.xml
 C:\EmailTemplateEditor\EmailTemplateteService\bin\Debug\EntityFramework.SqlServer.xml
-C:\EmailTemplateEditor\EmailTemplateteService\obj\Debug\EmailTemplateService.csprojResolveAssemblyReference.cache
 C:\EmailTemplateEditor\EmailTemplateteService\obj\Debug\EmailTemplateteService.dll
 C:\EmailTemplateEditor\EmailTemplateteService\obj\Debug\EmailTemplateteService.pdb
